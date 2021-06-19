@@ -1,0 +1,120 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+struct disciplina{
+char nome[20];
+};
+
+struct Estudante{
+char nome[20];
+char apelido[20];
+};
+struct pautaNo{
+disciplina d;
+int ano;
+double nota;
+Estudante est;
+pautaNo* proximo;
+};
+
+pautaNo * ps=(pautaNo)malloc(sizeof(pautaNo)5);
+
+int tamanho=0;
+
+void colocarProduto(pautaNo p){
+ps[tamanho]=p;
+tamanho=tamanho+1;
+}
+
+void listar(){
+for(int i=0; i<tamanho; i++){
+printf("Dados do estudante:\n");
+printf("Nome: %s \n",ps[i].est.nome);
+printf("Apelido: %s \n",ps[i].d.nome);
+printf("Disciplina: %s \n",ps[i].est.nome);
+
+	printf("Ano: %f \n",ps[i].ano);
+	printf("Nota: %f \n",ps[i].nota); 
+	
+	printf("\n");
+}
+}
+void pesquisar(char n[]){
+for(int i=0; i<tamanho; i++){
+if(ps[i].est.nome==n){
+printf("Encontrado o nome: %s \n",ps[i].est.nome);
+}
+
+}
+}
+
+void organizar(){
+
+printf("\n lista organiza da ");
+for(int i=0; i<tamanho; i++){
+	
+	for(int j=0; j<tamanho; j++){
+		
+	 if(ps[j].nota>ps[j+1].nota){
+	 	pautaNo temp=ps[j+1];
+	 	ps[j+1]=ps[j];
+	 	ps[j]=temp;
+	 }
+} 
+}
+}
+
+int main(){
+
+disciplina d;
+strcpy(d.nome,"ESDA");
+
+Estudante e1;
+strcpy(e1.nome,"Dias");
+strcpy(e1.apelido,"Mayato");
+pautaNo p1;
+p1.ano=2021;
+p1.nota=15;
+p1.est=e1;
+p1.d=d;
+
+Estudante e2;
+strcpy(e2.nome,"Dias 2");
+strcpy(e2.apelido,"Mayato 1");
+pautaNo p2;
+p2.ano=2021;
+p2.nota=15;
+p2.est=e2;
+p2.d=d;
+
+Estudante e3;
+strcpy(e3.nome,"Mudengue");
+strcpy(e3.apelido,"Mayatoo");
+pautaNo p3;
+p3.ano=2021;
+p3.nota=13;
+p3.est=e3;
+p3.d=d;
+
+Estudante e4;
+strcpy(e4.nome,"Mudengue 2");
+strcpy(e4.apelido,"Mayato 1");
+pautaNo p4;
+p4.ano=2021;
+p4.nota=10;
+p4.est=e4;
+p4.d=d;
+
+colocarProduto(p1);
+colocarProduto(p2);
+colocarProduto(p3);
+colocarProduto(p4);
+
+listar();
+pesquisar("Dias");
+organizar();
+listar();
+
+return 0;
+}
